@@ -8,7 +8,7 @@ classifiers = ['Operating System :: Microsoft :: Windows :: Windows 10',
 #Calling setup
 setup(
     name = 'pycaged',
-    version = '0.1.2',
+    version = '0.2',
     description = 'fetches CAGED microdata / busca microdados do CAGED',
     long_description = open('README.txt').read(),
     url = '',

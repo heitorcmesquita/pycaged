@@ -10,7 +10,7 @@ setup(
     name = 'pycaged',
     version = '0.2',
     description = 'fetches CAGED microdata / busca microdados do CAGED',
-    long_description = open('README.rst').read(),
+    long_description = open('README.txt').read(),
     url = '',
     author = 'Heitor Caixeta',
     author_email = 'heitor.ca.mesquita@gmail.com',

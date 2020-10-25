@@ -8,7 +8,7 @@ def getCagedState(ano, mes, uf):
     ''' ano = int; mes = str; uf = int (Código IBGE)
     Retorna um dataframe com um resumo dos microdados do CAGED para o mês e estado selecionados
     
-    O README.txt deste pacote mostra um código para uma iteração completa destes dados.
+    O README deste pacote mostra um código para uma iteração completa destes dados.
     Acesse em https://github.com/heitorcmesquita/pycaged
     '''
    
@@ -110,7 +110,7 @@ def getCagedMun(ano, mes, uf):
     ''' ano = int; mes = str; uf = int (Código IBGE)
     Retorna um dataframe com um resumo dos microdados do CAGED para o mês e estado selecionados
     
-    O README.txt deste pacote mostra um código para uma iteração completa destes dados.
+    O README deste pacote mostra um código para uma iteração completa destes dados.
     Acesse em https://github.com/heitorcmesquita/pycaged
     '''
     

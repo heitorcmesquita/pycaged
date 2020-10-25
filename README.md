@@ -1,5 +1,5 @@
 #pycaged
-'Este modulo permite a extração de dataframes a partir dos microdados do CAGED. Ele conta com duas funções básicas:
+Este modulo permite a extração de dataframes a partir dos microdados do CAGED. Ele conta com duas funções básicas:
 
 getCagedState(ano, mes, uf):
 
@@ -47,8 +47,12 @@ CAGEDMun.to_csv('CAGEDMun.csv', encoding = 'iso-8859-1')
 
 
 Dicionário de Dados:
+
 Admitidos : 1 / Desligados: 2
 Sexo: Masculino (1), Feminino (2)
-Códigos IBGE por Estado: https://www.oobj.com.br/bc/article/quais-os-c%C3%B3digos-de-cada-uf-no-brasil-465.html
-Tabela com seções da economia do IBGE: https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv'
+
+Códigos IBGE por Estado: 
+https://www.oobj.com.br/bc/article/quais-os-c%C3%B3digos-de-cada-uf-no-brasil-465.html
+Tabela com seções da economia do IBGE: 
+https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv
     

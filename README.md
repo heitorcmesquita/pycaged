@@ -26,7 +26,7 @@ pycaged.getCagedState(ano, mes, uf)
 		'uf' (estado selecionado)
 		'Count' (contagem de empregos gerados/eliminados)
 
-getCagedMun(ano, mes, uf):
+pycaged.getCagedMun(ano, mes, uf):
 
 	Retorna o seguinte dataframe:
 		'Município' (município da uf selecionada)

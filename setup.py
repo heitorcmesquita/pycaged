@@ -8,7 +8,7 @@ classifiers = ['Operating System :: Microsoft :: Windows :: Windows 10',
 #Calling setup
 setup(
     name = 'pycaged',
-    version = '0.3',
+    version = '0.4',
     description = 'fetches CAGED microdata / busca microdados do CAGED',
     long_description = open('README.txt').read(),
     url = '',
@@ -20,11 +20,6 @@ setup(
     packages = find_packages(),
     include_packages_data = True,
     install_requires = ['py7zr','pandas','wget'],
-    entry_points = {
-        'console_scripts':[
-            'pycaged=pycaged.__main__:main',
-            ]
-        },
     zip_safe = False)
 
 

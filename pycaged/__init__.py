@@ -3,6 +3,12 @@ from py7zr import SevenZipFile
 import pandas as pd
 import wget
 
+#Baixando dados de classificação de emprego do IBGE e criando dicionário de meses
+url2 = 'https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv'
+wget.download(url2, 'cnae.csv')   
+cnae = pd.read_csv('cnae.csv', sep = ',', index_col = None, encoding = 'UTF-8')
+dicmes = {'01':'Janeiro', '02':'Fevereiro','03':'Março', '04':'Abril','05':'Maio', '06':'Junho', '07':'Julho', '08':'Agosto', '09':'Setembro', '10':'Outubro','11':'Novembro', '12':'Dezembro'}
+
 def getCagedState(ano, mes, uf):
     
     ''' ano = int; mes = str; uf = int (Código IBGE)
@@ -11,16 +17,8 @@ def getCagedState(ano, mes, uf):
     O README deste pacote mostra um código para uma iteração completa destes dados.
     Acesse em https://github.com/heitorcmesquita/pycaged
     '''
-   
-    #Dicionário para concatenar url de 2020
-    dicmes = {'01':'Janeiro', '02':'Fevereiro','03':'Março', '04':'Abril','05':'Maio', '06':'Junho', '07':'Julho', '08':'Agosto', '09':'Setembro', '10':'Outubro','11':'Novembro', '12':'Dezembro'}
     year = str(ano)
     
-    #Baixando dados de classificação de emprego do IBGE
-    url2 = 'https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv'
-    wget.download(url2, 'cnae.csv')   
-    cnae = pd.read_csv('cnae.csv', sep = ',', index_col = None, encoding = 'UTF-8')
-
     if ano <2020: 
        #Baixando e extraindo microdados
         url = "ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/"+year+"/CAGEDEST_"+mes+year+".7z"
@@ -113,16 +111,8 @@ def getCagedMun(ano, mes, uf):
     O README deste pacote mostra um código para uma iteração completa destes dados.
     Acesse em https://github.com/heitorcmesquita/pycaged
     '''
-    
-    #Dicionário para concatenar url de 2020
-    dicmes = {'01':'Janeiro', '02':'Fevereiro','03':'Março', '04':'Abril','05':'Maio', '06':'Junho', '07':'Julho', '08':'Agosto', '09':'Setembro', '10':'Outubro','11':'Novembro', '12':'Dezembro'}
     year = str(ano)
     
-    #Baixando dados de classificação de emprego do IBGE
-    url2 = 'https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv'
-    wget.download(url2, 'cnae.csv')   
-    cnae = pd.read_csv('cnae.csv', sep = ',', index_col = None, encoding = 'UTF-8')
-
     if ano <2020: 
        #Baixando e extraindo microdados
         url = "ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/"+year+"/CAGEDEST_"+mes+year+".7z"
@@ -206,7 +196,6 @@ def getCagedMun(ano, mes, uf):
         print('Os dados do mês' + mes + ' de ' + year + 'foram retornados com sucesso')
         remove('cnae.csv')
         return data
-
-if __name__ == "__main__":
-    main()
     
+
+

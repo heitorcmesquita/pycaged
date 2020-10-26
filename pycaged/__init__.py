@@ -61,7 +61,6 @@ def getCagedState(ano, mes, uf):
         
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         print('Os dados do mês' + mes + ' de ' + year + 'foram retornados com sucesso')
-        remove('cnae.csv')
         return data
         
     elif ano == 2020:
@@ -100,7 +99,6 @@ def getCagedState(ano, mes, uf):
         
         data['Sexo'] = data['Sexo'].replace(3,2)
         print('Os dados do mês' + mes + ' de ' + year + 'foram retornados com sucesso')
-        remove('cnae.csv')
         return data
     
 def getCagedMun(ano, mes, uf):
@@ -155,7 +153,6 @@ def getCagedMun(ano, mes, uf):
                
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         print('Os dados do mês' + mes + ' de ' + year + 'foram retornados com sucesso')
-        remove('cnae.csv')
         return data
         
     elif ano == 2020:
@@ -194,7 +191,6 @@ def getCagedMun(ano, mes, uf):
         
         data['Sexo'] = data['Sexo'].replace(3,2) 
         print('Os dados do mês' + mes + ' de ' + year + 'foram retornados com sucesso')
-        remove('cnae.csv')
         return data
     
 

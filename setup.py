@@ -22,7 +22,7 @@ setup(
     author_email = 'heitor.ca.mesquita@gmail.com',
     license = 'MIT',
     classifiers = classifiers,
-    keywords = 'caged',
+    keywords = ['caged', 'ibge', 'emprego']
     packages = find_packages(),
     include_packages_data = True,
     install_requires = ['py7zr','pandas','wget'],

@@ -60,6 +60,7 @@ def getCagedState(ano, mes, uf):
             data['Count'][k] = data2['Count'][k] 
         
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
+        data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -98,6 +99,7 @@ def getCagedState(ano, mes, uf):
             data['Count'][k] = data2['Count'][k] 
         
         data['Sexo'] = data['Sexo'].replace(3,2)
+        data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
     
@@ -152,6 +154,7 @@ def getCagedMun(ano, mes, uf):
             data['Count'][k] = data2['Count'][k] 
                
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
+        data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -190,6 +193,7 @@ def getCagedMun(ano, mes, uf):
             data['Count'][k] = data2['Count'][k] 
         
         data['Sexo'] = data['Sexo'].replace(3,2) 
+        data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
     

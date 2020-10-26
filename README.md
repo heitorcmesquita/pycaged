@@ -1,3 +1,4 @@
+
 # pycaged
 
 Este é um módulo para extrair relatórios a partir dos microdados do CAGED
@@ -10,25 +11,26 @@ Instale no prompt de comando (Windows) com o comando:
 pip install pycaged
 ```
 
-## Uso
+## Uso no python
 
 ```python
 import pycaged
 
+#Ano (int), mes(str), uf(int, código ibge)
 pycaged.getCagedState(ano, mes, uf)
 
-	Retorna o seguinte dataframe:
+	"Retorna o seguinte dataframe:
 		'Admitidos/Desligados' (classificação da operação)
 		'Ano Declarado' (ano do relatório)
 		'Seção' (seção da economia do emprego gerado/eliminado)
 		'Sexo' (sexo do empregado)
 		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
 		'uf' (estado selecionado)
-		'Count' (contagem de empregos gerados/eliminados)
+		'Count' (contagem de empregos gerados/eliminados)"
 
 pycaged.getCagedMun(ano, mes, uf):
 
-	Retorna o seguinte dataframe:
+	"Retorna o seguinte dataframe:
 		'Município' (município da uf selecionada)
 		'Admitidos/Desligados' (classificação da operação)
 		'Ano Declarado' (ano do relatório)
@@ -36,23 +38,26 @@ pycaged.getCagedMun(ano, mes, uf):
 		'Sexo' (sexo do empregado)
 		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
 		'uf' (estado selecionado)
-		'Count' (contagem de empregos gerados/eliminados)```
+		'Count' (contagem de empregos gerados/eliminados)"```
 
 ## Contributing
 Contribuições serão bem-vindas.
 
 ## Licença
 [MIT](https://choosealicense.com/licenses/mit/)
-``
-Para fazer uma iteração com os dados completos dos municípios de um estado, desde 2015 (no exemplo, Alagoas (27)):
+```
+## Extração de dados completos
+É possível fazer uma iteração com os dados completos dos municípios de um estado desde 2015:
  ESTE PROCESSO PODE LEVAR ENTRE 40 E 100 MINUTOS
         __________________________________________
+ 
+ ```python
  #Criando a tabela final
 CAGEDMun = pd.DataFrame(columns = [], index = None)
 mes = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
 ano = 2015
 
-#Iteração para os anos e meses
+#Iteração para os anos e meses (usamos Alagoas, 27, como exemplo)
 while ano < 2021:
     for i in mes:
         data = pycaged.getCagedMun(ano, i, 27)
@@ -62,13 +67,11 @@ while ano < 2021:
     ano += 1
     
 CAGEDMun.to_csv('CAGEDMun.csv', encoding = 'iso-8859-1')
-        _______________________________________________
+  ```
 
-
-#Dicionário de Dados:
-#Admitidos : 1 / Desligados: 2
-#Sexo: Masculino (1), Feminino (2)
-#Códigos IBGE por Estado: https://www.oobj.com.br/bc/article/quais-os-c%C3%B3digos-de-cada-uf-no-brasil-465.html
-#Tabela com seções da economia do IBGE: https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv
+## Dicionário de Dados:
+Admitidos/Desligados: Contratação (1), Demissão(2)
+Sexo: Masculino (1), Feminino (2)
+Códigos IBGE por Estado: https://www.oobj.com.br/bc/article/quais-os-c%C3%B3digos-de-cada-uf-no-brasil-465.html
+Tabela com seções da economia do IBGE: https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv
     
-

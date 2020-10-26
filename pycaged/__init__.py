@@ -195,8 +195,7 @@ def getCagedMun(ano, mes, uf):
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
     
-    
-   def getCagedBr(ano, mes):
+def getCagedBr(ano, mes):
     
     ''' ano = int; mes = str
     Retorna um dataframe com um resumo dos microdados do CAGED para o mês e estado selecionados

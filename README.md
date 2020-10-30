@@ -40,7 +40,7 @@ pycaged.listaMun(ano, mes, uf):
 		'uf' (estado selecionado)
 		'Count' (contagem de empregos gerados/eliminados)"```
 	
-pycaged.resumoEstados(ano, mes, uf):
+pycaged.resumoEstados(ano, mes):
 
 ## Contributing
 Contribuições serão bem-vindas.

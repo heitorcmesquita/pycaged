@@ -17,7 +17,7 @@ pip install pycaged
 import pycaged
 
 #Ano (int), mes(str), uf(int, código ibge)
-pycaged.cagedEstado(ano, mes, uf)
+pycaged.estado(ano, mes, uf)
 
 	"Retorna o seguinte dataframe:
 		'Admitidos/Desligados' (classificação da operação)
@@ -25,10 +25,11 @@ pycaged.cagedEstado(ano, mes, uf)
 		'Seção' (seção da economia do emprego gerado/eliminado)
 		'Sexo' (sexo do empregado)
 		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
+		'Salário Mensal Mediano' (salário mediano para aquele empregado(a), naquele setor da economia, naquele mês)
 		'uf' (estado selecionado)
 		'Count' (contagem de empregos gerados/eliminados)"
 
-pycaged.listaMun(ano, mes, uf):
+pycaged.municipios(ano, mes, uf):
 
 	"Retorna o seguinte dataframe:
 		'Município' (município da uf selecionada)
@@ -37,11 +38,21 @@ pycaged.listaMun(ano, mes, uf):
 		'Seção' (seção da economia do emprego gerado/eliminado)
 		'Sexo' (sexo do empregado)
 		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
+		'Salário Mensal Mediano' (salário mediano para aquele empregado(a), naquele setor da economia, naquele mês)		
 		'uf' (estado selecionado)
-		'Count' (contagem de empregos gerados/eliminados)"```
+		'Count' (contagem de empregos gerados/eliminados)"
 	
 pycaged.resumoEstados(ano, mes):
-
+	"Retorna o seguinte dataframe:
+		'Admitidos/Desligados' (classificação da operação)
+		'Ano Declarado' (ano do relatório)
+		'Seção' (seção da economia do emprego gerado/eliminado)
+		'Sexo' (sexo do empregado)
+		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
+		'Salário Mensal Mediano' (salário mediano para aquele empregado(a), naquele setor da economia, naquele mês)		
+		'uf' (estado selecionado)
+		'Count' (contagem de empregos gerados/eliminados)"
+```
 ## Contributing
 Contribuições serão bem-vindas.
 

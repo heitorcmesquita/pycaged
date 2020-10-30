@@ -62,7 +62,7 @@ ano = 2015
 #Iteração para os anos e meses (usamos Alagoas, 27, como exemplo)
 while ano < 2021:
     for i in mes:
-        data = pycaged.getCagedMun(ano, i, 27)
+        data = pycaged.listaMun(ano, i, 27)
     
 #Consolidando dados na tabela final
         CAGEDMun = CAGEDMun.append(data, ignore_index = True)

@@ -9,7 +9,7 @@ wget.download(url2, 'cnae.csv')
 cnae = pd.read_csv('cnae.csv', sep = ',', index_col = None, encoding = 'UTF-8')
 dicmes = {'01':'Janeiro', '02':'Fevereiro','03':'Março', '04':'Abril','05':'Maio', '06':'Junho', '07':'Julho', '08':'Agosto', '09':'Setembro', '10':'Outubro','11':'Novembro', '12':'Dezembro'}
 
-def cagedEstado(ano, mes, uf):
+def estado(ano, mes, uf):
     
     ''' ano = int; mes = str; uf = int (Código IBGE)
     Retorna um dataframe com um resumo dos microdados do CAGED para o mês e estado selecionados
@@ -117,7 +117,7 @@ def cagedEstado(ano, mes, uf):
         return data
         
     
-def listaMun(ano, mes, uf):
+def municipios(ano, mes, uf):
    
     ''' ano = int; mes = str; uf = int (Código IBGE)
     Retorna um dataframe com um resumo dos microdados do CAGED para o mês e estado selecionados

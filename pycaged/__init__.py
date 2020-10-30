@@ -49,19 +49,25 @@ def cagedEstado(ano, mes, uf):
         
         #Contando número de contratações e demissões em um DF separado. Fazendo a média salárial do agrupamento 
         data['Count'] = ''
+        data3 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Count'].median()  
         data2 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Count'].count()   
         data = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Salário Mensal'].mean()           
         data['uf'] = uf
-        data['Count'] = '';
+        data['Count'] = ''
+        data['Salário Mensal Mediano'] = ''
         data['mes'] = mes
         
         #Trazendo dados de quantidade de contratações e demissões, e retornando DF    
         for k in range(0,len(data2)):
             data['Count'][k] = data2['Count'][k] 
+        for k in range(0,len(data3)):
+            data['Salário Mensal Mediano'][k] = data3['Median'][k] 
         
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'].fillna(0, inplace = True)
+        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -88,21 +94,28 @@ def cagedEstado(ano, mes, uf):
         data['região'] = '2020'
         data['Count'] = ''
         data.rename(columns = {"saldomovimentação":"Admitidos/Desligados", "região":"Ano Declarado", "seção":"Seção", 'sexo':'Sexo', 'salário':'Salário Mensal'}, inplace = True) 
+        data3 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Count'].median()  
         data2 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Count'].count()   
         data = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Salário Mensal'].mean()           
         data['uf'] = uf
         data['Count'] = ''
+        data['Salário Mensal Mediano'] = ''
         data['mes'] = mes
         
         #Trazendo dados de quantidade de contratações e demissões, e retornando DF    
         for k in range(0,len(data2)):
             data['Count'][k] = data2['Count'][k] 
+        for k in range(0,len(data3)):
+            data['Salário Mensal Mediano'][k] = data3['Median'][k] 
         
-        data['Sexo'] = data['Sexo'].replace(3,2)
+        data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'].fillna(0, inplace = True)
+        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
+        
     
 def listaMun(ano, mes, uf):
    
@@ -144,19 +157,25 @@ def listaMun(ano, mes, uf):
         
         #Contando número de contratações e demissões em um DF separado. Fazendo a média salárial do agrupamento 
         data['Count'] = ''
+        data3 = data.groupby(['Município', 'Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Count'].count()
         data2 = data.groupby(['Município', 'Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Count'].count()   
         data = data.groupby(['Município', 'Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Salário Mensal'].mean()           
         data['uf'] = uf
         data['Count'] = ''
+        data['Salário Mensal Mediano'] = ''
         data['mes'] = mes
         
         #Trazendo dados de quantidade de contratações e demissões, e retornando DF    
         for k in range(0,len(data2)):
             data['Count'][k] = data2['Count'][k] 
+        for k in range(0,len(data3)):
+            data['Salário Mensal Mediano'][k] = data3['Median'][k] 
                
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'].fillna(0, inplace = True)
+        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -186,19 +205,22 @@ def listaMun(ano, mes, uf):
         data2 = data.groupby(['Município', 'Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Count'].count()   
         data = data.groupby(['Município', 'Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo'], as_index = False)['Salário Mensal'].mean()           
         data['uf'] = uf
-        data['Count'] = ''
+        data['Salário Mensal Mediano'] = ''
         data['mes'] = mes
         
         #Trazendo dados de quantidade de contratações e demissões, e retornando DF    
         for k in range(0,len(data2)):
             data['Count'][k] = data2['Count'][k] 
-        
-        data['Sexo'] = data['Sexo'].replace(3,2)
+        for k in range(0,len(data3)):
+            data['Salário Mensal Mediano'][k] = data3['Median'][k] 
+               
+        data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'].fillna(0, inplace = True)
+        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
-    
 
 def resumoEstados(ano, mes):
     
@@ -239,18 +261,24 @@ def resumoEstados(ano, mes):
         
         #Contando número de contratações e demissões em um DF separado. Fazendo a média salárial do agrupamento 
         data['Count'] = ''
+        data3 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo', 'UF'], as_index = False)['Count'].median()   
         data2 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo', 'UF'], as_index = False)['Count'].count()   
         data = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo', 'UF'], as_index = False)['Salário Mensal'].mean()           
-        data['Count'] = '';
+        data['Count'] = ''
+        data['Salário Mensal Mediano'] = ''
         data['mes'] = mes
         
         #Trazendo dados de quantidade de contratações e demissões, e retornando DF    
         for k in range(0,len(data2)):
             data['Count'][k] = data2['Count'][k] 
-        
+        for k in range(0,len(data3)):
+            data['Salário Mensal Mediano'][k] = data3['Median'][k] 
+            
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'].fillna(0, inplace = True)
+        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -276,19 +304,23 @@ def resumoEstados(ano, mes):
         data['região'] = '2020'
         data['Count'] = ''
         data.rename(columns = {"saldomovimentação":"Admitidos/Desligados", "região":"Ano Declarado", "seção":"Seção", 'sexo':'Sexo', 'salário':'Salário Mensal', 'uf':'UF'}, inplace = True) 
+        data3 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo', 'UF'], as_index = False)['Count'].median()   
         data2 = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo', 'UF'], as_index = False)['Count'].count()   
         data = data.groupby(['Admitidos/Desligados', 'Ano Declarado', 'Seção', 'Sexo', 'UF'], as_index = False)['Salário Mensal'].mean()           
         data['Count'] = ''
+        data['Salário Mensal Mediano'] = ''
         data['mes'] = mes
         
         #Trazendo dados de quantidade de contratações e demissões, e retornando DF    
         for k in range(0,len(data2)):
             data['Count'][k] = data2['Count'][k] 
-        
-        data['Sexo'] = data['Sexo'].replace(3,2)
+        for k in range(0,len(data3)):
+            data['Salário Mensal Mediano'][k] = data3['Median'][k] 
+            
+        data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'].fillna(0, inplace = True)
+        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
-        return data 
-
-
+        return data

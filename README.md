@@ -17,7 +17,7 @@ pip install pycaged
 import pycaged
 
 #Ano (int), mes(str), uf(int, código ibge)
-pycaged.getCagedState(ano, mes, uf)
+pycaged.cagedEstado(ano, mes, uf)
 
 	"Retorna o seguinte dataframe:
 		'Admitidos/Desligados' (classificação da operação)
@@ -28,7 +28,7 @@ pycaged.getCagedState(ano, mes, uf)
 		'uf' (estado selecionado)
 		'Count' (contagem de empregos gerados/eliminados)"
 
-pycaged.getCagedMun(ano, mes, uf):
+pycaged.listaMun(ano, mes, uf):
 
 	"Retorna o seguinte dataframe:
 		'Município' (município da uf selecionada)
@@ -39,6 +39,8 @@ pycaged.getCagedMun(ano, mes, uf):
 		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
 		'uf' (estado selecionado)
 		'Count' (contagem de empregos gerados/eliminados)"```
+	
+pycaged.resumoEstados(ano, mes, uf):
 
 ## Contributing
 Contribuições serão bem-vindas.

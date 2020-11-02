@@ -67,7 +67,7 @@ def estado(ano, mes, uf):
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
-        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'] = data['Salário Mensal Mediano'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -112,7 +112,7 @@ def estado(ano, mes, uf):
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
-        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'] = data['Salário Mensal Mediano'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -175,7 +175,7 @@ def municipios(ano, mes, uf):
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
-        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'] = data['Salário Mensal Mediano'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -220,7 +220,7 @@ def municipios(ano, mes, uf):
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
-        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'] = data['Salário Mensal Mediano'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
 
@@ -280,7 +280,7 @@ def resumoEstados(ano, mes):
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
-        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'] = data['Salário Mensal Mediano'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
         
@@ -323,6 +323,6 @@ def resumoEstados(ano, mes):
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
-        data['Salário Mensal Mediano'] = data['Salário Mensal'].astype(int)
+        data['Salário Mensal Mediano'] = data['Salário Mensal Mediano'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data

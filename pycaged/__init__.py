@@ -109,6 +109,7 @@ def estado(ano, mes, uf):
             data['Salário Mensal Mediano'][k] = data3['Salário Mensal'][k] 
         
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
+        data['Sexo'] = data['Sexo'].replace(3,2)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
@@ -217,6 +218,7 @@ def municipios(ano, mes, uf):
             data['Salário Mensal Mediano'][k] = data3['Salário Mensal'][k] 
                
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
+        data['Sexo'] = data['Sexo'].replace(3,2)        
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)
@@ -320,6 +322,7 @@ def resumoEstados(ano, mes):
             data['Salário Mensal Mediano'][k] = data3['Salário Mensal'][k] 
             
         data['Admitidos/Desligados'] = data['Admitidos/Desligados'].replace(2,-1)
+        data['Sexo'] = data['Sexo'].replace(3,2)
         data['Salário Mensal'].fillna(0, inplace = True)
         data['Salário Mensal'] = data['Salário Mensal'].astype(int)
         data['Salário Mensal Mediano'].fillna(0, inplace = True)

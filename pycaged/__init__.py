@@ -338,17 +338,17 @@ def getDicCaged():
             text = text
         return text
     
-        url = 'https://docs.google.com/spreadsheets/d/1nOks3-26qXMgTE7tm6NaAsQbVq2yZxjj9FymyBTjIUg/export?format=csv&id=1nOks3-26qXMgTE7tm6NaAsQbVq2yZxjj9FymyBTjIUg'
-        wget.download(url, 'dicionariocaged.csv')
-        dicionario_caged = pd.read_csv('dicionariocaged.csv', encoding = 'UTF-8', sep = ';', index_col = None, quotechar = "'", dtype = str)
-        dicionario_caged.cod = [d.replace('"', '') for d in dicionario_caged.cod]
-        dicionario_caged.nome = [d.replace('"', '') for d in dicionario_caged.nome]
-        dicionario_caged['Grupo'] = dicionario_caged.cod
-        dicionario_caged.cod = '0'+dicionario_caged.cod    
-        dicionario_caged.Grupo = dicionario_caged.cod.apply(subs)
-        dicionario_caged.drop(['cod'], axis = 1, inplace = True)
-        return dicionario_caged
-    
+    url = 'https://docs.google.com/spreadsheets/d/1nOks3-26qXMgTE7tm6NaAsQbVq2yZxjj9FymyBTjIUg/export?format=csv&id=1nOks3-26qXMgTE7tm6NaAsQbVq2yZxjj9FymyBTjIUg'
+    wget.download(url, 'dicionariocaged.csv')
+    dicionario_caged = pd.read_csv('dicionariocaged.csv', encoding = 'UTF-8', sep = ';', index_col = None, quotechar = "'", dtype = str)
+    dicionario_caged.cod = [d.replace('"', '') for d in dicionario_caged.cod]
+    dicionario_caged.nome = [d.replace('"', '') for d in dicionario_caged.nome]
+    dicionario_caged['Grupo'] = dicionario_caged.cod
+    dicionario_caged.cod = '0'+dicionario_caged.cod    
+    dicionario_caged.Grupo = dicionario_caged.cod.apply(subs)
+    dicionario_caged.drop(['cod'], axis = 1, inplace = True)
+    return dicionario_caged
+            
 def admissoes(mes, uf):
     def subs2(text):
         if len(text) == 6:

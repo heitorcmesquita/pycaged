@@ -329,3 +329,89 @@ def resumoEstados(ano, mes):
         data['Salário Mensal Mediano'] = data['Salário Mensal Mediano'].astype(int)
         print('Os dados do mês ' + mes + ' de ' + year + ' foram retornados com sucesso')
         return data
+    
+def getDicCaged():
+    def subs(text):
+        if len(text) == 4:
+            text = text[-3:]
+        else:
+            text = text
+        return text
+    
+        url = 'https://docs.google.com/spreadsheets/d/1nOks3-26qXMgTE7tm6NaAsQbVq2yZxjj9FymyBTjIUg/export?format=csv&id=1nOks3-26qXMgTE7tm6NaAsQbVq2yZxjj9FymyBTjIUg'
+        wget.download(url, 'dicionariocaged.csv')
+        dicionario_caged = pd.read_csv('dicionariocaged.csv', encoding = 'UTF-8', sep = ';', index_col = None, quotechar = "'", dtype = str)
+        dicionario_caged.cod = [d.replace('"', '') for d in dicionario_caged.cod]
+        dicionario_caged.nome = [d.replace('"', '') for d in dicionario_caged.nome]
+        dicionario_caged['Grupo'] = dicionario_caged.cod
+        dicionario_caged.cod = '0'+dicionario_caged.cod    
+        dicionario_caged.Grupo = dicionario_caged.cod.apply(subs)
+        dicionario_caged.drop(['cod'], axis = 1, inplace = True)
+        return dicionario_caged
+    
+def admissoes(mes, uf):
+    def subs2(text):
+        if len(text) == 6:
+            text = '0' + text
+            text = text[0:3]
+        else:
+            text = text[0:3]
+        return text  
+    
+    url = 'ftp://ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentações/2020/'+dicmes[mes]+'/CAGEDMOV2020'+mes+'.7z'
+    wget.download(url, 'caged.7z')
+    archive = SevenZipFile('caged.7z', mode = 'r')
+    archive.extractall()
+    print('microdados baixados com sucesso, passando para leitura')
+    archive.close()
+    remove('caged.7z')
+            
+    #Lendo o arquivo txt e filtrando por UF. Depois, deletando arquivos baixados
+    data = pd.read_csv('CAGEDMOV2020'+mes+'.txt', sep = ';', encoding = 'UTF-8')
+    data = data[(data.uf == uf)].reset_index()
+    remove('CAGEDMOV2020'+mes+'.txt') 
+    
+    data.subclasse = data.subclasse.astype(str)
+    data.subclasse = data.subclasse.apply(subs2)
+    
+    data = pd.merge(data, dicionario_caged, left_on = 'subclasse', right_on = 'Grupo')
+    data.Grupo = data.Grupo + '. ' + data.nome
+    admissoes = data[(data['saldomovimentação'] == 1)]
+    admissoes = admissoes.groupby(['competência', 'Grupo', 'saldomovimentação'], as_index = False)['index'].count()
+    admissoes = admissoes.pivot(index = 'competência', columns = 'Grupo', values = 'index')
+    
+    return admissoes
+
+def desligamentos(mes, uf):
+    def subs2(text):
+        if len(text) == 6:
+            text = '0' + text
+            text = text[0:3]
+        else:
+            text = text[0:3]
+        return text  
+    
+    url = 'ftp://ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentações/2020/'+dicmes[mes]+'/CAGEDMOV2020'+mes+'.7z'
+    wget.download(url, 'caged.7z')
+    archive = SevenZipFile('caged.7z', mode = 'r')
+    archive.extractall()
+    print('microdados baixados com sucesso, passando para leitura')
+    archive.close()
+    remove('caged.7z')
+            
+    #Lendo o arquivo txt e filtrando por UF. Depois, deletando arquivos baixados
+    data = pd.read_csv('CAGEDMOV2020'+mes+'.txt', sep = ';', encoding = 'UTF-8')
+    data = data[(data.uf == uf)].reset_index()
+    remove('CAGEDMOV2020'+mes+'.txt') 
+    
+    data.subclasse = data.subclasse.astype(str)
+    data.subclasse = data.subclasse.apply(subs2)
+    
+    data = pd.merge(data, dicionario_caged, left_on = 'subclasse', right_on = 'Grupo')
+    data.Grupo = data.Grupo + '. ' + data.nome
+    desligamentos = data[(data['saldomovimentação'] == -1)]
+    desligamentos = desligamentos.groupby(['competência', 'Grupo', 'saldomovimentação'], as_index = False)['index'].count()
+    desligamentos = admissoes.pivot(index = 'competência', columns = 'Grupo', values = 'index')
+    
+    return desligamentos
+

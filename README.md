@@ -1,7 +1,7 @@
 
 # pycaged
 
-Este é um módulo para extrair relatórios a partir dos microdados do CAGED
+Este é um módulo para extrair relatórios a partir dos microdados do CAGED. Consolidando os dados do CAGED antigo com o novo. (As ressalvas metodológicas do Ministério da Economia devem ser consideradas)
 
 ## Instalação
 
@@ -16,42 +16,20 @@ pip install pycaged
 ```python
 import pycaged
 
-#Ano (int), mes(str), uf(int, código ibge)
-pycaged.estado(ano, mes, uf)
+#Ano (int), mes(str), uf(int, código ibge da UF)
+pycaged.SubclasseMunicipios(ano, mes, uf)   #<---- Nível mais desagregado
 
-	"Retorna o seguinte dataframe:
-		'Admitidos/Desligados' (classificação da operação)
-		'Ano Declarado' (ano do relatório)
-		'Seção' (seção da economia do emprego gerado/eliminado)
-		'Sexo' (sexo do empregado)
-		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
-		'Salário Mensal Mediano' (salário mediano para aquele empregado(a), naquele setor da economia, naquele mês)
-		'uf' (estado selecionado)
-		'Count' (contagem de empregos gerados/eliminados)"
+	"Retorna o dataframe com dados CAGED dos municípios da UF selecionada a nível Subclasse de classificação de emprego (CNAE 2.0)"
 
-pycaged.municipios(ano, mes, uf):
+#Ano (int), mes(str), uf(int, código ibge da UF)
+pycaged.ClasseMunicipios(ano, mes, uf)
 
-	"Retorna o seguinte dataframe:
-		'Município' (município da uf selecionada)
-		'Admitidos/Desligados' (classificação da operação)
-		'Ano Declarado' (ano do relatório)
-		'Seção' (seção da economia do emprego gerado/eliminado)
-		'Sexo' (sexo do empregado)
-		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
-		'Salário Mensal Mediano' (salário mediano para aquele empregado(a), naquele setor da economia, naquele mês)		
-		'uf' (estado selecionado)
-		'Count' (contagem de empregos gerados/eliminados)"
+	"Retorna o dataframe com dados CAGED dos municípios da UF selecionada a nível de Classe de classificação de emprego (CNAE 2.0)"
 	
-pycaged.resumoEstados(ano, mes):
-	"Retorna o seguinte dataframe:
-		'Admitidos/Desligados' (classificação da operação)
-		'Ano Declarado' (ano do relatório)
-		'Seção' (seção da economia do emprego gerado/eliminado)
-		'Sexo' (sexo do empregado)
-		'Salário Mensal' (salário médio para aquele empregado(a), naquele setor da economia, naquele mês)
-		'Salário Mensal Mediano' (salário mediano para aquele empregado(a), naquele setor da economia, naquele mês)		
-		'uf' (estado selecionado)
-		'Count' (contagem de empregos gerados/eliminados)"
+#Ano (int), mes(str), uf(int, código ibge da UF)
+pycaged.SecaoMunicipios(ano, mes, uf)    #<----- Nível menos agregado
+
+	"Retorna o dataframe com dados CAGED dos municípios da UF selecionada a nível de Seção de classificação de emprego (CNAE 2.0)"
 ```
 ## Contributing
 Contribuições serão bem-vindas.
@@ -67,15 +45,15 @@ Contribuições serão bem-vindas.
         __________________________________________
  
  ```python
- #Criando a tabela final
+ #Exemplo : Criando uma tabela para uma sequência de anos
 CAGEDMun = pd.DataFrame(columns = [], index = None)
 mes = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
 ano = 2015
 
 #Iteração para os anos e meses (usamos Alagoas, 27, como exemplo)
-while ano < 2021:
+while ano < 2022:
     for i in mes:
-        data = pycaged.listaMun(ano, i, 27)
+        data = pycaged.SecaoMunicipios(ano, i, 27)
     
 #Consolidando dados na tabela final
         CAGEDMun = CAGEDMun.append(data, ignore_index = True)
@@ -91,6 +69,3 @@ Sexo: Masculino (1), Feminino (2)
 
 Códigos IBGE por Estado:
  https://www.oobj.com.br/bc/article/quais-os-c%C3%B3digos-de-cada-uf-no-brasil-465.html
-
-Tabela com seções da economia do IBGE: https://docs.google.com/spreadsheets/d/1SKvOYhjIigkNh8kTvHwmjdGNvO5PHfYI/export?format=csv
-    

@@ -67,5 +67,8 @@ Admitidos/Desligados: Contratação (1), Demissão(2)
 
 Sexo: Masculino (1), Feminino (2)
 
+Classificação de Setores CNAE 2.0:
+https://docs.google.com/spreadsheets/d/1bMFKpREb4YlW2ZzW1WVLdMN59ol-iLw5/export?format=xlsx
+
 Códigos IBGE por Estado:
  https://www.oobj.com.br/bc/article/quais-os-c%C3%B3digos-de-cada-uf-no-brasil-465.html

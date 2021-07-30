@@ -30,6 +30,21 @@ pycaged.ClasseMunicipios(ano, mes, uf)
 pycaged.SecaoMunicipios(ano, mes, uf)    #<----- Nível menos agregado
 
 	"Retorna o dataframe com dados CAGED dos municípios da UF selecionada a nível de Seção de classificação de emprego (CNAE 2.0)"
+	
+	#Ano (int), mes(str)
+pycaged.SubclasseEstados(ano, mes)   #<---- Nível mais desagregado
+
+	"Retorna o dataframe com dados CAGED de todos os estados a nível Subclasse de classificação de emprego (CNAE 2.0)"
+
+#Ano (int), mes(str)
+pycaged.ClasseEstados(ano, mes)
+
+	"Retorna o dataframe com dados de todos os estados a nível de Classe de classificação de emprego (CNAE 2.0)"
+	
+#Ano (int), mes(str)
+pycaged.SecaoEstados(ano, mes)    #<----- Nível menos agregado
+
+	"Retorna o dataframe com dados CAGED de todos os estados a nível de Seção de classificação de emprego (CNAE 2.0)"
 ```
 ## Contributing
 Contribuições serão bem-vindas.
@@ -66,6 +81,8 @@ CAGEDMun.to_csv('CAGEDMun.csv', encoding = 'iso-8859-1')
 Admitidos/Desligados: Contratação (1), Demissão(2) 
 
 Sexo: Masculino (1), Feminino (2)
+
+Classificação de Setores CNAE 2.0: https://docs.google.com/spreadsheets/d/1bMFKpREb4YlW2ZzW1WVLdMN59ol-iLw5/export?format=xlsx
 
 Códigos IBGE por Estado:
  https://www.oobj.com.br/bc/article/quais-os-c%C3%B3digos-de-cada-uf-no-brasil-465.html

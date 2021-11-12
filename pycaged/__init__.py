@@ -30,7 +30,7 @@ class caged:
     def __init__(self, ano, mes):
         self.year = str(ano)
         #Baixando dados de classificação de emprego do IBGE e criando dicionário de meses
-        url = 'https://docs.google.com/spreadsheets/d/1WCYQ_jPE86M56tVhnyUC1E-vBj5PSz8t/export?format=xlsx'
+        url = 'https://docs.google.com/spreadsheets/d/15A_UmD2RUqH7eYIOoLRH9QDjrx8p0kiO/export?format=xlsx'
         wget.download(url, 'cnae.xlsx')   
         cnae = pd.read_excel('cnae.xlsx', index_col = None)
         dicmes = {'01':'Janeiro', '02':'Fevereiro','03':'Março', '04':'Abril','05':'Maio', '06':'Junho', '07':'Julho', '08':'Agosto', '09':'Setembro', '10':'Outubro','11':'Novembro', '12':'Dezembro'}

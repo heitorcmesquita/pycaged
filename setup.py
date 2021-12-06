@@ -13,7 +13,7 @@ classifiers = ['Operating System :: Microsoft :: Windows :: Windows 10',
 #Calling setup
 setup(
     name = 'pycaged',
-    version = '1.7',
+    version = '1.8',
     description = 'fetches CAGED microdata / busca microdados do CAGED',
     long_description=long_description,
     long_description_content_type='text/markdown',

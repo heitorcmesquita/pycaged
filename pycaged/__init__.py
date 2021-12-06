@@ -95,7 +95,7 @@ class caged:
         elif self.ano >= 2020:
         
             #Baixando e extraindo microdados
-            url = 'ftp://ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentações/'+ self.year+ '/' + self.dicmes[self.mes]+'/CAGEDMOV'+self.year+self.mes+'.7z'
+            url = 'ftp://ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/'+ self.year+ '/' +self.year+self.mes+'/CAGEDMOV'+self.year+self.mes+'.7z'
             try:
                 wget.download(url, 'caged.7z')
             except:
@@ -138,7 +138,7 @@ class caged:
         elif self.ano >= 2020:
         
             #Baixando e extraindo microdados
-            url = 'ftp://ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/Movimentações/'+ self.year+ '/' + self.dicmes[self.mes]+'/CAGEDMOV'+self.year+self.mes+'.7z'
+            url = 'ftp://ftp.mtps.gov.br/pdet/microdados/NOVO CAGED/'+ self.year+ '/' +self.year+self.mes+'/CAGEDMOV'+self.year+self.mes+'.7z'
             try:
                 wget.download(url, 'caged.7z')
             except:

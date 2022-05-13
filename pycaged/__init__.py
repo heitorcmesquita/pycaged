@@ -109,8 +109,9 @@ class caged:
             for chunk in pd.read_csv('CAGEDMOV'+ self.year + self.mes +'.txt', sep = ';', encoding = 'UTF-8', chunksize = 100000):
                 chunk = chunk[(chunk.uf == self.uf)].reset_index()
                 chunk['FxEt'] = list(map(caged.add_fxet, chunk['idade']))
-                chunk['Salário Mensal'] = [d.replace(',','.') for d in chunk['Salário Mensal']]
-                chunk['Salário Mensal'] = pd.to_numeric(chunk['Salário Mensal'])
+                chunk['salário'] = [str(d).replace(',','.') for d in chunk['salário']]
+                chunk['salário'] = [str(d).replace('nan','0') for d in chunk['salário']]
+                chunk['salário'] = pd.to_numeric(chunk['salário'])
                 data = data.append(chunk)
             self.data = data
             print('microdados lidos, fazendo cálculos')

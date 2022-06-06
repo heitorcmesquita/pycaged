@@ -42,7 +42,7 @@ class caged:
         del url      
             
     def getDataMunicipios(self):
-        
+        #O Sscript separa antes e depois de 2020 porque depois de 2020 os links do caged mudaram, por conta da mudança de metodologia
         if self.ano < 2020: 
            #Baixando e extraindo microdados
             url = "ftp://ftp.mtps.gov.br/pdet/microdados/CAGED/"+self.year+"/CAGEDEST_"+self.mes+self.year+".7z"
